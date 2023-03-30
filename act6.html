@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTIVITY 6</title>
+</head>
+
+<script language="JavaScript" type="text/JavaScript">
+
+    function stop_function(){
+        var keys = document.getElementById('Keys').setAttribute("onkeypress", "");
+        keys.removeAttribute("onkeypress");
+    }
+    function move_function(event){
+
+        if (event.key == 'd' || event.key == 'D'){
+            position_left = document.getElementById('box').style.left;
+            position_left = position_left.substring(0,position_left.length-2);
+            position_left = parseInt(position_left)+100;
+            document.getElementById('box').style.left=position_left+"px";
+            document.getElementById("box").innerHTML='<img src="RIGHT.png"/>';
+            if(position_left >= 1213){
+                stop_function();
+            }
+
+        }else if(event.key == 'a' || event.key == 'A'){
+            position_right = document.getElementById('box').style.left;
+            position_right = position_right.substring(0,position_right.length-2);
+            position_right = parseInt(position_right)-100;
+            document.getElementById('box').style.left=position_right+"px";
+            document.getElementById("box").innerHTML='<img src="LEFT.png"/>';
+            if(position_right <= -30){
+                stop_function();
+            }
+        }else if(event.key == 'w' || event.key == 'W'){
+            position_bottom = document.getElementById('box').style.top;
+            position_bottom = position_bottom.substring(0,position_bottom.length-2);
+            position_bottom = parseInt(position_bottom)-53;
+            document.getElementById('box').style.top=position_bottom+"px";
+            document.getElementById("box").innerHTML='<img src="UP.png"/>';
+            if(position_bottom <= 0){
+                stop_function();
+            } // 155 -> s && 83 -> S
+        }else if(event.key == 'x' || event.key == 'X'){
+            position_bottom = document.getElementById('box').style.top;
+            position_bottom = position_bottom.substring(0,position_bottom.length-2);
+            position_bottom = parseInt(position_bottom)+51;
+            document.getElementById('box').style.top=position_bottom+"px";
+            document.getElementById("box").innerHTML='<img src="DOWN.png"/>';
+            if(position_bottom >= 750){
+                stop_function();
+            }
+        }
+
+    }
+
+
+</script>
+
+<style type="text/css">
+
+    #border{
+        width: 90%;
+        height: 89%;
+        border-style: solid;
+        border-color:rgb(0, 0, 0);
+        border-width: 50%;
+        top: 50px;
+        position: fixed;
+
+    }
+    img{
+        width: 150px;
+        height: 100px;
+
+    }
+</style>
+<body id="Keys" onkeypress="move_function(event)">
+    <div id="border">
+        <div id="box" style="top: 350px; left: 750px; position: absolute;">
+           <img alt="Image" src="RIGHT.png"> 
+        </div>
+    </div>
+</body>
+
+</html>
